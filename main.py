@@ -1,43 +1,30 @@
 import streamlit as st
-from langchain.chat_models import ChatOpenAI
-from langchain.schema import SystemMessage, HumanMessage, AIMessage
 from dotenv import load_dotenv
 import os
 
+from config import setup_env
+from chat import handle_chat_interaction, init_messages
+from sidebar import setup_sidebar
 
-def main():
-    load_dotenv()
 
-    openai_api_key = os.getenv("OPENAI_API_KEY")
-    llm = ChatOpenAI(temperature=0, openai_api_key=openai_api_key)
-
-    st.set_page_config(page_title="My Great ChatGPT", page_icon="🤗)
+def setup_page():
+    """ページの基本設定を行う関数"""
+    st.set_page_config(page_title="My Great ChatGPT", page_icon="🤗")
     st.header("My Great ChatGPT 🤗")
 
+
+def main():
+    """メイン関数"""
+    # ページの基本設定
+    setup_page()
+    setup_env()
+    setup_sidebar()
+
     # チャット履歴の初期化
-    if "messages" not in st.session_state:
-        st.session_state.messages = [
-            SystemMessage(content="You are a helpful assistant.")
-        ]
+    init_messages()
 
-    # ユーザーの入力を監視
-    if user_input := st.chat_input("聞きたいことを入力してね！"):
-        st.session_state.messages.append(HumanMessage(content=user_input))
-        with st.spinner("ChatGPT is typing ..."):
-            response = llm(st.session_state.messages)
-        st.session_state.messages.append(AIMessage(content=response.content))
-
-    # チャット履歴の表示
-    messages = st.session_state.get("messages", [])
-    for message in messages:
-        if isinstance(message, AIMessage):
-            with st.chat_message("assistant"):
-                st.markdown(message.content)
-        elif isinstance(message, HumanMessage):
-            with st.chat_message("user"):
-                st.markdown(message.content)
-        else:  # isinstance(message, SystemMessage):
-            st.write(f"System message: {message.content}")
+    # チャット機能
+    handle_chat_interaction()
 
 
 if __name__ == "__main__":
