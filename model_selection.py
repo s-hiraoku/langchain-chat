@@ -5,6 +5,8 @@ from config import get_openai_api_key
 
 def select_model():
     openai_api_key = get_openai_api_key()
+
+    st.sidebar.title("Options")
     model = st.sidebar.radio("Choose a model:", ("GPT-3.5", "GPT-4"))
     model_name = "gpt-3.5-turbo" if model == "GPT-3.5" else "gpt-4"
     temperature = st.sidebar.slider(
