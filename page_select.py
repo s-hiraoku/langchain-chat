@@ -1,19 +1,23 @@
 import streamlit as st
 
+select_page = {"chat": "Chat", "webSite": "Web Site Summarizer"}
+
 
 def chat_page():
-    st.title("My Great ChatGPT 🤗")
+    st.title("Chat 🤗")
 
 
 def url_input_page():
-    st.title("URL")
+    st.title("Web Site Summarizer 🔗")
 
 
 def page_select():
-    st.sidebar.title("Navigation")
-    page = st.sidebar.radio("Choose a page:", ("Chat", "Request URL"))
+    st.sidebar.title("Function Selection")
+    page_key = st.sidebar.radio("Choose a function:", list(select_page.values()))
 
-    if page == "Chat":
+    if page_key == select_page["chat"]:
         chat_page()
-    elif page == "Request URL":
+    elif page_key == select_page["webSite"]:
         url_input_page()
+
+    return page_key
