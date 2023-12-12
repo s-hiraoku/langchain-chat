@@ -5,6 +5,7 @@ from config import setup_env
 from page_select import page_select, select_page
 from chat_interaction import handle_chat_interaction
 from web_summarize import handle_web_summarize
+from youtube_summarize import handle_youtube_summarize
 
 
 def main():
@@ -18,6 +19,8 @@ def main():
         handle_chat_interaction(llm)
     elif page == select_page["webSite"]:
         handle_web_summarize(llm)
+    elif page == select_page["youtube"]:
+        handle_youtube_summarize(llm)
 
     init_messages()
 
