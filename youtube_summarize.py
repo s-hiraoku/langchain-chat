@@ -1,10 +1,10 @@
 import streamlit as st
 from langchain.chat_models import ChatOpenAI
 from langchain.callbacks import get_openai_callback
-
 from langchain.prompts import PromptTemplate
 from langchain.chains.summarize import load_summarize_chain
 from langchain.document_loaders import YoutubeLoader
+import ssl
 
 
 def get_url_input():
@@ -14,6 +14,7 @@ def get_url_input():
 
 def get_document(url):
     with st.spinner("Fetching Content ..."):
+        ssl._create_default_https_context = ssl._create_unverified_context
         loader = YoutubeLoader.from_youtube_url(
             url,
             add_video_info=True,  # タイトルや再生数も取得できる
@@ -24,9 +25,9 @@ def get_document(url):
 
 def summarize(llm, docs):
     prompt_template = """Write a concise Japanese summary of the following transcript of Youtube Video.
-    
+
 ============
-    
+
 {text}
 
 ============
