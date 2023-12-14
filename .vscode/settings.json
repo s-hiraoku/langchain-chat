@@ -1,3 +1,11 @@
 {
-  "cSpell.words": ["dotenv", "langchain", "openai", "streamlit"]
+  "cSpell.words": [
+    "contextsize",
+    "dotenv",
+    "langchain",
+    "llms",
+    "openai",
+    "streamlit",
+    "tiktoken"
+  ]
 }
