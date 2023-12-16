@@ -60,8 +60,8 @@ def get_content(url):
                 return soup.article.get_text()
             else:
                 return soup.body.get_text()
-    except:
-        st.write("something wrong")
+    except Exception as e:
+        st.write(f"something wrong\n\n{e}")
         return None
 
 
