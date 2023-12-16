@@ -5,6 +5,8 @@
     "langchain",
     "llms",
     "openai",
+    "qdrant",
+    "qfrant",
     "streamlit",
     "tiktoken"
   ]

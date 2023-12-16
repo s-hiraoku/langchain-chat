@@ -4,11 +4,11 @@ from youtube_summarize import chain_type_select, handle_youtube_summarize
 
 
 st.set_page_config(
-    page_title="Youtube Video Summarizer",
+    page_title="Youtube Summarizer",
     page_icon="📺",
 )
 
-st.title("Youtube Video Summarizer 📺")
+st.title("Youtube Summarizer 📺")
 
 llm = select_model()
 chain_type = chain_type_select()
