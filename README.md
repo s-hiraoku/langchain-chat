@@ -35,12 +35,6 @@ LangChain Chat は、LangChain を使用してチャットボットを構築す�
    ```
 2. ブラウザが自動的に開き、アプリケーションのインターフェースが表示される
 
-## リソース
-
-- [LangChain ドキュメント](https://langchain.readthedocs.io)
-- [サンプル PDF ファイル](リンク)
-- [デモ YouTube ビデオ](リンク)
-
 ## ライセンス
 
 このプロジェクトは[MIT ライセンス](LICENSE)の下で公開されています。
